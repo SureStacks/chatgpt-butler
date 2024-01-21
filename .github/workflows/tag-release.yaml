@@ -1,0 +1,26 @@
+name: Tag on Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create or Update Tags
+        run: |
+          VERSION=${{ github.event.release.tag_name }}
+          MAJOR=$(echo "$VERSION" | cut -d. -f1)
+          MINOR=$(echo "$VERSION" | cut -d. -f2)
+
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+
+          git tag -fa "$MAJOR" -m "Update $MAJOR tag"
+          git tag -fa "$MAJOR.$MINOR" -m "Update $MAJOR.$MINOR tag"
+
+          git push origin --tags -f
