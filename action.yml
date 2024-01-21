@@ -2,10 +2,10 @@ name: 'ChatGPT Buttler'
 description: "A github action to handle issues first response with ChatGPT."
 author: "Cedric Blomart"
 inputs:
-  repo-token:
+  token:
     description: 'Repo token'
     required: false
-    default: ${{ github.token }}
+    default: ${{ secrets.GITHUB_TOKEN }}
   max-issues:
     description: 'Maximum number of issues to process'
     required: false
