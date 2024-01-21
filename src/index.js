@@ -5,7 +5,7 @@ import { ChatGPTAPI } from 'chatgpt'
 
 try {
     // get octokit
-    const octokit = github.getOctokit(token);
+    const octokit = github.getOctokit(core.getInput('token'));
     // get chatgpt api with model from 'chatgpt-model' the key is available in 'openai-key'
     const chatgpt = new ChatGPTAPI({
         apiKey: core.getInput('openai-key'),
