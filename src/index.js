@@ -26,13 +26,19 @@ try {
     // for each issue
     orderedIssues.forEach(async issue => {
         // create the prompt by prefixing the issue body with the provided 'prompt-preamble'
-        const prompt = core.getInput('prompt-preamble') + issue.body;
+        const prompt = core.getInput('prompt-preamble') + "\n#" + issue.title + "\n" + issue.body;
+        // log the prompt
+        console.log(issue.number + " > " + prompt);
+        // get chatgpt answer
+        const answer = await chatgpt(prompt, core.getInput('openai-key'));
+        // log the answer
+        console.log(issue.number + " < " + answer);
         // ask chatgtp for a response to the prompt (the openai key is provided in 'openai-key')
         await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
             owner: github.context.repo.owner,
             repo: github.context.repo.repo,
             issue_number: issue.number,
-            body: await chatgpt(prompt, core.getInput('openai-key'))
+            body: answer
         });
         // wait a bit before handling the next issue
         await new Promise(resolve => setTimeout(resolve, core.getInput('openai-key') * 1000));

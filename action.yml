@@ -13,7 +13,7 @@ inputs:
   only-labels:
     description: 'Only check issues with these labels'
     required: false
-  pronpt-preamble:
+  prompt-preamble:
     description: 'Preamble to to prompt to chatgpt followed by the issue body'
     required: true
     default: 'Please help me answer the follwing github issue:\n\n'
