@@ -42,3 +42,24 @@ with:
     only-labels: enhancement, question
     openai-key: <openai key>
 ```
+
+## How to Get an OpenAI API Key
+
+The action needs an Open AI key. Additionally, you can choose the model to use.
+
+1. Go to OpenAI's Platform website at platform.openai.com and sign in with an OpenAI account.
+2. Click your profile icon at the top-right corner of the page and select "View API Keys".
+3. Click "Create New Secret Key" to generate a new API key.
+4. Make sure to save the API key as soon as possible. Once the window showing it closes, you won't be able to reopen it.
+
+You can create an OpenAI API key for free. New free trial users receive $5 (USD) worth of credit. However, this expires after three months. Once your credit has been used up or expires, you can enter billing information to continue using the API of your choice.
+
+### Models
+
+The OpenAI API is powered by a diverse set of models with different capabilities and price points. For chat applications, the following models are compatible:
+- GPT-4 and GPT-4 Turbo: These models improve on GPT-3.5 and can understand as well as generate natural language or code.
+- GPT-3.5: This model improves on GPT-3 and can understand as well as generate natural language or code.
+
+### Throttling
+
+OpenAI enforces rate limits at the organization level. Rate limits are measured in two ways: RPM (requests per minute) and TPM (tokens per minute). If you're looking for specific costs based on the AI model you want to use (for example, GPT-4 or gpt-3.5-turbo, as used in ChatGPT), check out [OpenAI's AI models and pricing page](https://platform.openai.com/docs/models).
