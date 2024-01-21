@@ -36,7 +36,7 @@ jobs:
       - name: Check for changes in dist
         id: check
         run: |
-          git diff --quiet dist/ || echo "::set-output name=changed::true"
+          git diff --quiet dist/ || echo "changed=true" >> $GITHUB_OUTPUT
 
       - name: Commit and push changes
         if: steps.check.outputs.changed == 'true'
