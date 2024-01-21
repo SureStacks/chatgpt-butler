@@ -35,15 +35,15 @@ try {
             // log the prompt
             core.debug(issue.number + " > " + prompt);
             // get chatgpt answer
-            const answer = await chatgpt(prompt, core.getInput('openai-key'));
+            const answer = await chatgpt.sendMessage(prompt);
             // log the answer
-            core.debug(issue.number + " < " + answer);
+            core.debug(issue.number + " < " + answer.text);
             // ask chatgtp for a response to the prompt (the openai key is provided in 'openai-key')
             await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
                 owner: github.context.repo.owner,
                 repo: github.context.repo.repo,
                 issue_number: issue.number,
-                body: answer
+                body: answer.text
             });
             // log the answer
             core.info("Answered issue " + issue.number + " : " + issue.title);
