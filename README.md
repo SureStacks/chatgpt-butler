@@ -14,7 +14,7 @@ A limit of 10 issues are treated at a time.
 
 Name | Description | Default 
 -- | --- | ---
-token | token to access github | ```${{ secrets.GITHUB_TOKEN }}```
+token | token to access github | ```${{ github.token }}```
 max-issues | Maximum number of issues to process | 10
 only-labels | Only check issues with these labels | 
 prompt-preamble | Preamble to to prompt to chatgpt followed by the issue body' | 'Please help me answer the follwing github issue:\n\n'
