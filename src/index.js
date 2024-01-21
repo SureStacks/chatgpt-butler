@@ -22,7 +22,7 @@ try {
         filter: 'unanswered'
     });
     // only check issues if there are some
-    if (issues.length != 0) {
+    if (issues && issues.length != 0) {
         // order the issues per creation date descending and take the x first ones. x being the provided 'max-issues'
         const orderedIssues = issues.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).slice(0, core.getInput('max-issues'));
         // for each issue
