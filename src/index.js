@@ -14,7 +14,7 @@ try {
         }
     });
     // get unanswered issues from repository with provided labels or all if not provided
-    const issues = octokit.issues.listForRepo({
+    const issues = octokit.rest.issues.listForRepo({
         owner: github.context.repo.owner,
         repo: github.context.repo.repo,
         labels: core.getInput('labels').replace(' ','').split(','),
