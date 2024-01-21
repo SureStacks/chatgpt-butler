@@ -21,6 +21,11 @@ try {
         state: 'open',
         filter: 'unanswered'
     });
+    // return if there is no issue
+    if (issues.length === 0) {
+        core.info("No issue to answer");
+        return;
+    }
     // order the issues per creation date descending and take the x first ones. x being the provided 'max-issues'
     const orderedIssues = issues.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)).slice(0, core.getInput('max-issues'));
     // for each issue
