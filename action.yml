@@ -1,5 +1,5 @@
 name: 'ChatGPT Buttler'
-descripton: "A github action to handle issues first response with ChatGPT"
+descripton: "A github action to handle issues first response with ChatGPT. This action will prompt recent issues to ChatGPT and post the response as a comment."
 author: "Cedric Blomart"
 inputs:
   repo-token:
