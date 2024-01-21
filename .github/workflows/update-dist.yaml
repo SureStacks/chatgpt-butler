@@ -2,8 +2,10 @@ name: Update Dist
 
 on:
   push:
+    branches:
+      - main
     paths:
-      - 'src/**.js'
+      - 'src/**/*.js'
   workflow_dispatch:
 
 permissions:
