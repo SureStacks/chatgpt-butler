@@ -1,0 +1,43 @@
+name: Update Dist
+
+on:
+  push:
+    paths:
+      - 'src/**.js'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+
+      - name: Install @vercel/ncc
+        run: npm install -g @vercel/ncc
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build with @vercel/ncc
+        run: ncc build src/index.js -o dist --license licenses.txt
+
+      - name: Check for changes in dist
+        id: check
+        run: |
+          git diff --quiet dist/ || echo "::set-output name=changed::true"
+
+      - name: Commit and push changes
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add dist/index.js
+          git add dist/licenses.txt
+          git commit -m "Update dist" && git push

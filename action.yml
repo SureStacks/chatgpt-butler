@@ -1,0 +1,33 @@
+name: 'ChatGPT Buttler'
+descripton: "A github action to handle issues first response with ChatGPT"
+author: "Cedric Blomart"
+inputs:
+  repo-token:
+    description: 'Repo token'
+    required: false
+    default: ${{ github.token }}
+  max-issues:
+    description: 'Maximum number of issues to process'
+    required: false
+    default: 10
+  only-labels:
+    description: 'Only check issues with these labels'
+    required: false
+  pronpt-preamble:
+    description: 'Preamble to to prompt to chatgpt followed by the issue body'
+    required: true
+    default: 'Please help me answer the follwing github issue:\n\n'
+  openai-key:
+    description: 'OpenAI API key'
+    required: true
+  chatgpt-model:
+    description: 'ChatGPT model to use'
+    required: false
+    default: 'gpt-4'
+  delay:
+    description: 'Delay between two requests to the OpenAI API'
+    required: false
+    default: 5
+runs:
+  using: 'node20'
+  main: 'dist/index.js'

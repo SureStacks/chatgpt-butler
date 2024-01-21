@@ -1,0 +1,17 @@
+{
+  "name": "chatgpt-buttler",
+  "version": "0.1.0",
+  "description": "A github action to handle issues first response with ChatGPT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/github": "^6.0.0",
+    "chatgpt": "^5.2.5"
+  }
+}
