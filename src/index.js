@@ -14,13 +14,14 @@ try {
         }
     });
     // get unanswered issues from repository with provided labels or all if not provided
-    const issues = await octokit.rest.issues.listForRepo({
+    const response = await octokit.rest.issues.listForRepo({
         owner: github.context.repo.owner,
         repo: github.context.repo.repo,
         labels: core.getInput('labels').replace(' ','').split(','),
         state: 'open',
         filter: 'unanswered'
     });
+    const issues = response.data;
     // only check issues if there are some
     if (issues && issues.length != 0) {
         // order the issues per creation date descending and take the x first ones. x being the provided 'max-issues'
