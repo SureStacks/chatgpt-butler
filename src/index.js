@@ -18,10 +18,10 @@ try {
         owner: github.context.repo.owner,
         repo: github.context.repo.repo,
         labels: core.getInput('labels').replace(' ','').split(','),
-        state: 'open',
-        filter: 'unanswered'
+        state: 'open'
     });
-    const issues = response.data;
+    // get issues with a filter on those that were not commented.
+    const issues = response.data.filter(issue => issue.comments === 0);
     // only check issues if there are some
     if (issues && issues.length != 0) {
         // order the issues per creation date descending and take the x first ones. x being the provided 'max-issues'
