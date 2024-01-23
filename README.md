@@ -1,4 +1,7 @@
-# ChatGPT Buttler
+# ChatGPT Butler
+
+> There is already a ton of actions leveraging ChatGPT out there. Many of those have a focus on code review and only a few of those allowed both handling incidents and customizing prompt.
+> That is why i developped GhatGPT Butler, to help me manage issues on my github open projects!
 
 A GitHub action to handle issues first response with ChatGPT
 
